@@ -1,3 +1,5 @@
+import { LinkExpired } from "@/links/domain/errors.ts";
+import { Click, type Visitor } from "@/links/domain/models/click.ts";
 import type { Expiration } from "@/links/domain/models/expiration.ts";
 import type { ShortCode } from "@/links/domain/models/short-code.ts";
 import type { TargetUrl } from "@/links/domain/models/target-url.ts";
@@ -44,5 +46,11 @@ export class Link {
 
   isExpiredAt(now: Date): boolean {
     return this.props.expiration?.hasPassed(now) ?? false;
+  }
+
+  /** Follows the link: an expired link refuses the visit, an active one yields a click. */
+  visit(visitor: Visitor, now: Date): Click {
+    if (this.isExpiredAt(now)) throw new LinkExpired(this.code.value);
+    return Click.record(this.code, visitor, now);
   }
 }

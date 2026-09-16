@@ -29,3 +29,15 @@ export class ShortCodeExhausted extends LinkError {
     super(`could not allocate a free short code after ${attempts} attempts`);
   }
 }
+
+export class LinkNotFound extends LinkError {
+  constructor(readonly code: string) {
+    super(`link ${code} not found`);
+  }
+}
+
+export class LinkExpired extends LinkError {
+  constructor(readonly code: string) {
+    super(`link ${code} has expired`);
+  }
+}
