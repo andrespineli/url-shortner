@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | Last updated | 2026-09-16 |
-| Mode / SCM target | Compact; local |
+| Mode / SCM target | Compact; remote (https://github.com/andrespineli/url-shortner) |
 | PRD / TDD | [PLAN.md#prd](PLAN.md#prd) Approved (usuário, 2026-09-16, escopo R-001..R-010); [PLAN.md#tdd](PLAN.md#tdd) Approved (usuário, 2026-09-16) |
-| Current spec / status | SPEC-001..005 In review (bundle aprovado pelo usuário em 2026-09-16) |
-| Evidence | `deno task check` verde (18 arquivos, 51 cenários); smoke real: shorten 201, 4 cliques → 301, ftp 400, desconhecido 404, `/api/urls` e `/api/stats` coerentes, `/analytics` inspecionada no Chrome; nenhum commit |
+| Current spec / status | SPEC-001..005 Done; SPEC-006 Planned (não redigida) |
+| Evidence | `deno task check` verde (18 arquivos, 51 cenários); smoke real: shorten 201, 4 cliques → 301, ftp 400, desconhecido 404, `/api/urls` e `/api/stats` coerentes, `/analytics` inspecionada no Chrome; commits 6693cc5..ce699d8 em `main`, push para https://github.com/andrespineli/url-shortner, CI verde (https://github.com/andrespineli/url-shortner/actions/runs/35119655066) |
 
 ## Recent decisions
 
@@ -26,5 +26,5 @@
 
 ## Deferred
 
-- [ ] CI / publicação remota (alvo local) — PLAN.md
+- [x] CI / publicação remota — `.github/workflows/ci.yml`, CI verde em 2026-09-16
 - [ ] SPEC-006 página inicial com formulário (R-010, Could) — ainda não redigida

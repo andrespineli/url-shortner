@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | In review |
+| Status | Done |
 | Kind | feature |
 | Directives | query, inbound/wiring, UI (HTML renderizado no servidor) |
 | Skill coverage | Complete list in section 3 |
@@ -91,5 +91,5 @@ Done when
 | 2 | Janela de 30 dias em UTC com zero-fill | gráfico contínuo e sem ambiguidade de fuso | fuso do navegador |
 
 ## 8. Review
-- [ ] diff revisado pelo usuário
-- Commit: pendente (autorização do usuário)
+- [x] diff revisado e commit autorizado pelo usuário em 2026-09-16
+- Commit: `fb43a3d` em `main`, push para https://github.com/andrespineli/url-shortner; CI verde (https://github.com/andrespineli/url-shortner/actions/runs/35119655066)

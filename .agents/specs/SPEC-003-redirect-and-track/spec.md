@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | In review |
+| Status | Done |
 | Kind | feature |
 | Directives | domain, persistence, command, inbound/wiring |
 | Skill coverage | Complete list in section 3 |
@@ -90,5 +90,5 @@ Done when
 | 2 | Gravação de clique síncrona | simples e consistente no escopo local | fila/assíncrona (vale com volume alto) |
 
 ## 8. Review
-- [ ] diff revisado pelo usuário
-- Commit: pendente (autorização do usuário)
+- [x] diff revisado e commit autorizado pelo usuário em 2026-09-16
+- Commit: `31ab800` em `main`, push para https://github.com/andrespineli/url-shortner; CI verde (https://github.com/andrespineli/url-shortner/actions/runs/35119655066)

@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Mode / SCM target | Compact; entrevista ao vivo de 1h; local (repo git local, sem remoto) |
+| Mode / SCM target | Compact; entrevista ao vivo de 1h; remote (https://github.com/andrespineli/url-shortner) |
 | PRD status | Approved |
 | TDD status | Approved |
 | Owner / updated | andrespineli; 2026-09-16 |
@@ -116,8 +116,8 @@ endpoint (sucesso, validação, 404/410). O gate é `deno task check`
 | SPEC-005 | feature | Listar links (`ListLinks`, `GET /api/urls`) | R-007 | SPEC-003 |
 | SPEC-006 | feature | Página inicial com formulário e lista | R-010 | SPEC-004, SPEC-005 |
 
-- **Adiado:** CI e publicação remota (alvo local; o gate local continua
-  obrigatório). SPEC-006 é Could e entra só se houver tempo.
+- **CI:** GitHub Actions roda `deno task check`, adicionado antes da publicação
+  remota. SPEC-006 é Could e entra só se houver tempo.
 
 ## Approval
 
@@ -126,4 +126,4 @@ endpoint (sucesso, validação, 404/410). O gate é `deno task check`
 - Approval scope: planejamento aprovado; bundle SPEC-001…SPEC-005 redigido e aguardando aprovação (SPEC-006 opcional, não redigida)
 - Implementation authorization: usuário, 2026-09-16 — bundle SPEC-001..005 (com ajustes AD-005)
 - Time allocation / final review: reservar os últimos ~10 min para gate, demo e revisão do diff
-- Commit ownership: somente com autorização explícita do usuário ("não comite sem minha autorização", 2026-09-16)
+- Commit ownership: usuário autorizou em 2026-09-16 criar o repo público, commitar e fazer push (um commit por spec, direto na `main`)

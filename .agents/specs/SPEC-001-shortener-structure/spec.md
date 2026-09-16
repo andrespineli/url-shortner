@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | In review |
+| Status | Done |
 | Kind | domain-structure |
 | TDD | [../PLAN.md#tdd](../PLAN.md#tdd) |
 | Requirements | Baseline (roda com um comando, testes com um comando, README) |
@@ -18,7 +18,7 @@ README. Nenhum comportamento de produto.
 - LLD: `lld-typescript` (hexagonal + CQS), contexto `src/links/`, `src/shared/`, alias `@/` → `src/`.
 - Infra necessária: SQLite via `node:sqlite`, arquivo `data/shortener.db` (env `DATABASE_PATH`) e `:memory:` nos testes. Tabelas `links(code PK, original_url, created_at, expires_at)` e `clicks(id, code FK, referrer, user_agent, ip, clicked_at)` + índice `(code, clicked_at)`.
 - Config: `PORT` (8000), `BASE_URL` (`http://localhost:8000`), `DATABASE_PATH`.
-- SCM: local; CI adiado (alvo local, sem remoto).
+- SCM: remoto (https://github.com/andrespineli/url-shortner); CI GitHub Actions rodando `deno task check`.
 
 ## 2. Skills and references for the entire baseline
 
@@ -56,7 +56,7 @@ Done when
 - What: README com setup, `deno task dev`, `deno task test`, `deno task check` e a justificativa da stack/persistência. Sincroniza índice e state.
 - Verify: `deno task check`
 Done when
-- [x] gate verde localmente; CI registrado como adiado
+- [x] gate verde localmente; CI verde no GitHub Actions
 
 ## 4. Acceptance
 
@@ -73,5 +73,5 @@ Done when
 | D-3 schema idempotente no boot | um comando para rodar; sem ferramenta de migração | migrator dedicado (exagero para 2 tabelas) |
 
 - Planning approval: usuário, 2026-09-16, bundle SPEC-001..005 com ajustes (testes Deno.test + Gherkin; sem eventos/base Aggregate; IP apenas registrado)
-- Diff approval: pendente (apresentado em 2026-09-16)
-- Commit: pendente (autorização do usuário)
+- Diff approval: usuário, 2026-09-16
+- Commit: `6693cc5` em `main`, push para https://github.com/andrespineli/url-shortner; CI verde (https://github.com/andrespineli/url-shortner/actions/runs/35119655066)
