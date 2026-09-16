@@ -43,8 +43,8 @@ e ver N cliques, o dia e os referrers na página de analytics.
   - A3: top referrers mostra no máximo 10 entradas; referrer ausente aparece como `direct`.
   - A4: a página de analytics não mostra IP nem user-agent crus (privacidade de quem clica), só os agregados.
   - A5: acesso a link expirado não conta como clique.
-- **Pergunta em aberto:** R-010 entra só se sobrar tempo; não faz parte do
-  entregável mínimo.
+- **R-010:** não entregue. A SPEC-006 foi fechada sem implementação em
+  2026-09-16, a pedido do usuário.
 
 ## TDD
 
@@ -114,10 +114,10 @@ endpoint (sucesso, validação, 404/410). O gate é `deno task check`
 | SPEC-003 | feature | Redirecionar + registrar clique (`VisitLink`, `SqliteClicks`, `GET /:code`) | R-004, R-005, R-006 | SPEC-002 |
 | SPEC-004 | feature | Estatísticas + página de analytics (`LinkStats`, `/api/stats/:code`, `/analytics/:code`) | R-008, R-009 | SPEC-003 |
 | SPEC-005 | feature | Listar links (`ListLinks`, `GET /api/urls`) | R-007 | SPEC-003 |
-| SPEC-006 | feature | Página inicial com formulário e lista | R-010 | SPEC-004, SPEC-005 |
+| SPEC-006 | feature | Página inicial com formulário e lista — **fechada sem implementação** | R-010 | SPEC-004, SPEC-005 |
 
 - **CI:** GitHub Actions roda `deno task check`, adicionado antes da publicação
-  remota. SPEC-006 é Could e entra só se houver tempo.
+  remota. SPEC-006 (Could) foi fechada sem implementação.
 
 ## Approval
 

@@ -17,6 +17,8 @@
 | SPEC-003 | feature | [Redirect + click tracking (R-004..R-006)](SPEC-003-redirect-and-track/spec.md) | SPEC-002 | Done | commit `31ab800`, gate local verde, [CI verde](https://github.com/andrespineli/url-shortner/actions/runs/35119655066) |
 | SPEC-004 | feature | [Stats API + analytics page (R-008, R-009)](SPEC-004-stats-and-analytics/spec.md) | SPEC-003 | Done | commit `fb43a3d`, gate local verde, [CI verde](https://github.com/andrespineli/url-shortner/actions/runs/35119655066) |
 | SPEC-005 | feature | [List links (R-007)](SPEC-005-list-links/spec.md) | SPEC-003 | Done | commit `ce699d8`, gate local verde, [CI verde](https://github.com/andrespineli/url-shortner/actions/runs/35119655066) |
-| SPEC-006 | feature | Home page with form (R-010, Could) | SPEC-004, SPEC-005 | Planned | — |
+| SPEC-006 | feature | Home page with form (R-010, Could) | SPEC-004, SPEC-005 | Closed (não implementada) | Encerrada pelo usuário em 2026-09-16; R-010 adiado, nunca redigida |
 
-Statuses: Planned, Draft, Approved, In progress, In review, Done.
+Statuses: Planned, Draft, Approved, In progress, In review, Done, Closed (encerrada sem implementação).
+
+Plano encerrado em 2026-09-16: SPEC-001..005 entregues; SPEC-006 fechada sem implementação.
