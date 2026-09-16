@@ -123,7 +123,7 @@ endpoint (sucesso, validação, 404/410). O gate é `deno task check`
 
 - PRD: aprovado pelo usuário em 2026-09-16 (R-001..R-010, suposições A1–A5)
 - TDD: aprovado pelo usuário em 2026-09-16 (baseline, contratos, plano SPEC-001..006)
-- Approval scope: planejamento aprovado; bundle SPEC-001…SPEC-005 redigido e aguardando aprovação (SPEC-006 opcional, não redigida)
+- Approval scope: planejamento aprovado; bundle SPEC-001…SPEC-005 aprovado e entregue; SPEC-006 fechada sem implementação
 - Implementation authorization: usuário, 2026-09-16 — bundle SPEC-001..005 (com ajustes AD-005)
 - Time allocation / final review: reservar os últimos ~10 min para gate, demo e revisão do diff
 - Commit ownership: usuário autorizou em 2026-09-16 criar o repo público, commitar e fazer push (um commit por spec, direto na `main`)
