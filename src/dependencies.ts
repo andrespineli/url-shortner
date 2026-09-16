@@ -1,5 +1,9 @@
 import type { DatabaseSync } from "node:sqlite";
 import type { Config } from "@/config.ts";
+import { CreateLinkHandler } from "@/links/application/handlers/create-link-handler.ts";
+import type { ShortCodeGenerator } from "@/links/domain/ports/outbound/short-code-generator.ts";
+import { SqliteLinks } from "@/links/outbound/persistence/sqlite-links.ts";
+import { RandomShortCodeGenerator } from "@/links/outbound/random-short-code-generator.ts";
 import { openDatabase } from "@/shared/sqlite/database.ts";
 
 /**
@@ -9,17 +13,23 @@ import { openDatabase } from "@/shared/sqlite/database.ts";
 export interface Dependencies {
   config: Config;
   database: DatabaseSync;
+  createLink: CreateLinkHandler;
 }
 
 export interface Overrides {
   now?: () => Date;
+  codes?: ShortCodeGenerator;
 }
 
-export function buildDependencies(config: Config, _overrides: Overrides = {}): Dependencies {
+export function buildDependencies(config: Config, overrides: Overrides = {}): Dependencies {
+  const now = overrides.now ?? (() => new Date());
   const database = openDatabase(config.databasePath);
+  const links = new SqliteLinks(database);
+  const codes = overrides.codes ?? new RandomShortCodeGenerator();
 
   return {
     config,
     database,
+    createLink: new CreateLinkHandler(links, codes, now),
   };
 }
