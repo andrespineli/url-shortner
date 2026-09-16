@@ -27,6 +27,11 @@ export function linksApiRoutes(deps: Dependencies): Hono {
     }, 201);
   });
 
+  routes.get("/api/urls", async (c) => {
+    const links = await deps.listLinks.execute();
+    return c.json(links.map((link) => ({ ...link, shortUrl: shortUrl(link.shortCode) })));
+  });
+
   routes.get("/api/stats/:code", async (c) => {
     const code = c.req.param("code");
     const stats = await deps.linkStats.execute(code, deps.now());

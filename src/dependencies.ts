@@ -1,6 +1,7 @@
 import type { DatabaseSync } from "node:sqlite";
 import type { Config } from "@/config.ts";
 import { CreateLinkHandler } from "@/links/application/handlers/create-link-handler.ts";
+import { Query as ListLinksQuery } from "@/links/application/queries/list-links/query.ts";
 import { Query as LinkStatsQuery } from "@/links/application/queries/link-stats/query.ts";
 import { VisitLinkHandler } from "@/links/application/handlers/visit-link-handler.ts";
 import type { ShortCodeGenerator } from "@/links/domain/ports/outbound/short-code-generator.ts";
@@ -20,6 +21,7 @@ export interface Dependencies {
   createLink: CreateLinkHandler;
   visitLink: VisitLinkHandler;
   linkStats: LinkStatsQuery;
+  listLinks: ListLinksQuery;
 }
 
 export interface Overrides {
@@ -41,5 +43,6 @@ export function buildDependencies(config: Config, overrides: Overrides = {}): De
     createLink: new CreateLinkHandler(links, codes, now),
     visitLink: new VisitLinkHandler(links, clicks, now),
     linkStats: new LinkStatsQuery(database),
+    listLinks: new ListLinksQuery(database),
   };
 }
