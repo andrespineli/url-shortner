@@ -1,0 +1,54 @@
+version: 3
+selections:
+    - kind: skill
+      name: custom-spec-kit
+      source: local
+      version: 0.8.0
+      digest: sha256:97e083c365b77d9bcda1abfcbf434ccb48e3c4ace40c195d87045fec716df3bd
+    - kind: skill
+      name: dev-workflow
+      source: local
+      version: 0.6.0
+      digest: sha256:e106d815adf8d61e4a3341a87358383a9a81ed83a2f7e86f6efbe8145f7ccc47
+      bindings:
+        scm:
+            - github-scm
+        sdd:
+            - custom-spec-kit
+    - kind: skill
+      name: github-scm
+      source: local
+      version: 0.1.0
+      digest: sha256:92c26815a9b3fbbd17b9f43d3fcd77c5c2d64d4782254e250228a11183224c42
+    - kind: skill
+      name: kickstart-ts-deno
+      source: local
+      version: 0.4.0
+      digest: sha256:4fe83dfa1c794419d4f215ce512103e4c24363bef8744f01893da0ba36c3e19b
+    - kind: skill
+      name: lld-typescript
+      source: home
+    - kind: skill
+      name: low-level-design
+      source: home
+      bindings:
+        command:
+            - lld-typescript
+        domain:
+            - lld-typescript
+        hexagonal:
+            - lld-typescript
+        naming:
+            - lld-typescript
+        persistence:
+            - lld-typescript
+        query:
+            - lld-typescript
+    - kind: skill
+      name: project-kickstart
+      source: local
+      version: 0.3.0
+      digest: sha256:9d571a83e792126d0a4e62a71599678fb7c3e820f218172bf8c38fc442d67e2e
+      bindings:
+        stack:
+            - kickstart-ts-deno
