@@ -1,0 +1,35 @@
+@base = http://localhost:8000
+
+### Health
+GET {{base}}/health
+
+### Shorten
+POST {{base}}/api/shorten
+Content-Type: application/json
+
+{ "url": "https://www.jusbrasil.com.br" }
+
+### Shorten with expiration
+POST {{base}}/api/shorten
+Content-Type: application/json
+
+{ "url": "https://www.jusbrasil.com.br/jurisprudencia", "expiresAt": "2030-01-01T00:00:00Z" }
+
+### Invalid scheme → 400
+POST {{base}}/api/shorten
+Content-Type: application/json
+
+{ "url": "ftp://example.com" }
+
+### Redirect (replace the code)
+GET {{base}}/REPLACE
+Referer: https://google.com
+
+### List
+GET {{base}}/api/urls
+
+### Stats (replace the code)
+GET {{base}}/api/stats/REPLACE
+
+### Analytics page (open in a browser)
+GET {{base}}/analytics/REPLACE
