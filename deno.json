@@ -1,0 +1,27 @@
+{
+  "nodeModulesDir": "none",
+  "imports": {
+    "@hono/hono": "jsr:@hono/hono@^4.13.8",
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "@zod/zod": "jsr:@zod/zod@^4.6.5",
+    "@/": "./src/",
+    "@tests/": "./tests/"
+  },
+  "tasks": {
+    "dev": "deno run --watch --allow-net --allow-env --allow-read --allow-write main.ts",
+    "start": "deno run --allow-net --allow-env --allow-read --allow-write main.ts",
+    "test": "deno test --allow-env",
+    "check": "deno fmt --check && deno lint && deno check main.ts tests/ && deno test --allow-env",
+    "fmt": "deno fmt",
+    "lint": "deno lint"
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": false,
+    "exclude": [".agents/", "AGENTS.md", "README.md", "harness.yaml"]
+  },
+  "lint": { "exclude": [".agents/"] },
+  "compilerOptions": { "strict": true, "noUncheckedIndexedAccess": true }
+}
