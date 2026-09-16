@@ -1,6 +1,7 @@
 import { Hono } from "@hono/hono";
 import { logger } from "@hono/hono/logger";
 import type { Dependencies } from "@/dependencies.ts";
+import { analyticsRoutes } from "@/links/inbound/http/analytics-routes.ts";
 import { linksApiRoutes } from "@/links/inbound/http/api-routes.ts";
 import { redirectRoutes } from "@/links/inbound/http/redirect-routes.ts";
 import { mapLinkError } from "@/links/inbound/http/error-mapping.ts";
@@ -18,6 +19,7 @@ export function createApp(deps: Dependencies, opts: { log?: boolean } = {}): Hon
 
   // Feature routes mount here, one router per bounded context.
   app.route("/", linksApiRoutes(deps));
+  app.route("/", analyticsRoutes(deps));
   app.route("/", redirectRoutes(deps)); // catch-all /:code, keep last
 
   return app;

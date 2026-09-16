@@ -1,6 +1,7 @@
 import type { DatabaseSync } from "node:sqlite";
 import type { Config } from "@/config.ts";
 import { CreateLinkHandler } from "@/links/application/handlers/create-link-handler.ts";
+import { Query as LinkStatsQuery } from "@/links/application/queries/link-stats/query.ts";
 import { VisitLinkHandler } from "@/links/application/handlers/visit-link-handler.ts";
 import type { ShortCodeGenerator } from "@/links/domain/ports/outbound/short-code-generator.ts";
 import { SqliteClicks } from "@/links/outbound/persistence/sqlite-clicks.ts";
@@ -15,8 +16,10 @@ import { openDatabase } from "@/shared/sqlite/database.ts";
 export interface Dependencies {
   config: Config;
   database: DatabaseSync;
+  now: () => Date;
   createLink: CreateLinkHandler;
   visitLink: VisitLinkHandler;
+  linkStats: LinkStatsQuery;
 }
 
 export interface Overrides {
@@ -34,7 +37,9 @@ export function buildDependencies(config: Config, overrides: Overrides = {}): De
   return {
     config,
     database,
+    now,
     createLink: new CreateLinkHandler(links, codes, now),
     visitLink: new VisitLinkHandler(links, clicks, now),
+    linkStats: new LinkStatsQuery(database),
   };
 }

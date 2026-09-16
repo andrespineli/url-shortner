@@ -2,6 +2,7 @@ import { Hono } from "@hono/hono";
 import { z } from "@zod/zod";
 import { CreateLink } from "@/links/application/commands/create-link.ts";
 import type { Dependencies } from "@/dependencies.ts";
+import { AppError } from "@/shared/http/errors.ts";
 import { parseBody } from "@/shared/http/validate.ts";
 
 const ShortenBody = z.object({
@@ -24,6 +25,20 @@ export function linksApiRoutes(deps: Dependencies): Hono {
       createdAt: created.createdAt.toISOString(),
       expiresAt: created.expiresAt?.toISOString() ?? null,
     }, 201);
+  });
+
+  routes.get("/api/stats/:code", async (c) => {
+    const code = c.req.param("code");
+    const stats = await deps.linkStats.execute(code, deps.now());
+    if (!stats) throw new AppError(404, "LINK_NOT_FOUND", `link ${code} not found`);
+    return c.json({
+      shortCode: stats.shortCode,
+      shortUrl: shortUrl(stats.shortCode),
+      originalUrl: stats.originalUrl,
+      totalClicks: stats.totalClicks,
+      clicksByDay: stats.clicksByDay,
+      topReferrers: stats.topReferrers,
+    });
   });
 
   return routes;
